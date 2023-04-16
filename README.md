@@ -1,1 +1,1 @@
-# ESPN-Betting-Website-Prototype-Full-Stack-
+# ESPN Betting Website Prototype (Full Stack)
