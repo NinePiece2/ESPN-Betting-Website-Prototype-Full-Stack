@@ -57,7 +57,9 @@ As mentioned previously there were three microservices chosen to create the webs
 
 ^This shows the input that is used to generate the ```XML``` output for NFL Teams which can be seen in the [NFLTeams.xml](resources\NFLTeams.xml) file.
 
+<div>
 <iframe src="https://gist.github.com/NinePiece2/a57e368491ce8a73d4fb34dc17ac6ff6" width="100%" height="500"></iframe>
+</div>
 
 
 The FrontEnd then takes this ```XML``` and converts it into an ArrayList of Team object in the [Business.java](ProjectFiles\FrontEnd\src\main\java\Business\Business.java) and [TeamsXML.java](ProjectFiles\FrontEnd\src\main\java\Helper\TeamsXML.java) which is then used by the [NFLTeams.jsp](ProjectFiles\FrontEnd\src\main\webapp\NFLTeams.jsp) to show the relevant data to the user.
