@@ -65,4 +65,4 @@ To conclude the website was created using a microservice architecture and deploy
 
 </br>
 
-The website that was created is a prototype and other pages can be easily added now that a framework has been created for them.  Currently the Home button does not work and will error out however logging in and creating account work as well as the NFL Home and Teams pages and the Betting page after logging in. Other pages may be added at a later time.
+The website that was created is a prototype and other pages can be easily added now that a framework has been created for them.  Currently the Home button does not work and will error out however logging in and creating account work as well as the NFL Home and Teams pages and the Betting page after logging in. Other pages may be added at a later time. As the website is running off my personal server it is slow sometimes and does require some patients.
