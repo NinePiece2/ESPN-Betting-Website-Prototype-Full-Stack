@@ -59,13 +59,17 @@ As mentioned previously there were three microservices chosen to create the webs
 
 The FrontEnd then takes this ```XML``` and converts it into an ArrayList of Team object in the [Business.java](ProjectFiles/FrontEnd/src/main/java/Business/Business.java) and [TeamsXML.java](ProjectFiles/FrontEnd/src/main/java/Helper/TeamsXML.java) which is then used by the [NFLTeams.jsp](ProjectFiles/FrontEnd/src/main/webapp/NFLTeams.jsp) to show the relevant data to the user.
 
+</br>
+
+When it comes to communicating with the Betting microservice a form from the [BettingPage.jsp](ProjectFiles/FrontEnd/src/main/webapp/BettingPage.jsp) is forwarded to the betting microservice which outputs whether or not the bet was successfully placed and then redirects to the home page of the FrontEnd microservice.
+
 ## Docker
 
 To deploy the web application that has been created so far ```Docker``` was used to create 6 images. The first 3 images were used to host Apache Tomcat instances of the 3 microservices that use a compressed version of the Project Files for each microservice called .war files. The other 3 images were used to host MySQL instances for each microservice so they would have access to their own database as specified in [Microservice Design](#microservice-design). The files that were used to create the docker images are stored in the [DockerFiles](DockerFiles) folder.
 
 </br>
 
-Due to the limitations of the ```Kubernetes``` deployment the user facing microservices FrontEnd and Information need to be able to support HTTPS which requires them to have SSL certificates. The certificates were created and both of the images for those microservices were updated to use the certificates and an updated [server.xml](DockerFiles/server.xml) starting on line ```103``` that would use HTTPS. For more information view the [Dockerfile-frontendservice](DockerFiles/Dockerfile-frontendservice) file.
+Due to the limitations of the ```Kubernetes``` deployment the user facing microservices FrontEnd and Betting need to be able to support HTTPS which requires them to have SSL certificates. The certificates were created and both of the images for those microservices were updated to use the certificates and an updated [server.xml](DockerFiles/server.xml) starting on line ```103``` that would use HTTPS. For more information view the [Dockerfile-frontendservice](DockerFiles/Dockerfile-frontendservice) file.
 
 ## Kubernetes
 
