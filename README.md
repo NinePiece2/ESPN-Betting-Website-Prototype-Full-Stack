@@ -57,14 +57,16 @@ As mentioned previously there were three microservices chosen to create the webs
 
 ^This shows the input that is used to generate the ```XML``` output for NFL Teams which can be seen below:
 
-<style>
+<!-- <style>
   pre {
     max-height: 400px;
     overflow-y: auto;
   }
-</style>
+</style> -->
 
 
+
+<div style="overflow: scroll; width: 500px; height: 300px;">
 ```xml
 <teams>
     <team>
@@ -389,6 +391,7 @@ As mentioned previously there were three microservices chosen to create the webs
     </team>
 </teams>
 ```
+</div>
 
 The FrontEnd then takes this ```XML``` and converts it into an ArrayList of Team object in the [Business.java](ProjectFiles\FrontEnd\src\main\java\Business\Business.java) and [TeamsXML.java](ProjectFiles\FrontEnd\src\main\java\Helper\TeamsXML.java) which is then used by the [NFLTeams.jsp](ProjectFiles\FrontEnd\src\main\webapp\NFLTeams.jsp) to show the relevant data to the user.
 
