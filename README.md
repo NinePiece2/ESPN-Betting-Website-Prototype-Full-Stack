@@ -21,15 +21,11 @@ The first step in the process was to come up with a topic for the website and ES
 
 Below is a ```Use Case Diagram``` that was created for the website described above:
 
-</br>
-
 [<img src=resources/ESPN_with_Bets_Use_Case_Diagram.jpg height=500>](resources/ESPN_with_Bets_Use_Case_Diagram.jpg)
 
 </br>
 
 Below is a ```Entity Relationship Diagram``` that was created for the database needed to run the website described above:
-
-</br>
 
 [<img src=resources/ER_Diagram.jpg height=400>](resources/ER_Diagram.jpg)
 
@@ -48,12 +44,10 @@ As mentioned previously there were three microservices chosen to create the webs
 ```REST API``` is used to allow the FrontEnd microservice to communicate with the information microservice and request information such as information about a league, or the teams in a league. This information is transmitted using ```XML``` and the [InformationResource.java](ProjectFiles/Information/src/main/java/endpoint/InformationResource.java) class which can be seen below:
 
 [<img src=resources/XML_NFL.png height=200>](resources/XML_NFL.png)
-<br/>
 
 ^This shows the ```XML``` output that results from searching for information on the NFL.
 
 [<img src=resources/XML_NFLTeams.png height=25>](resources/XML_NFLTeams.png)
-<br/>
 
 ^This shows the input that is used to generate the ```XML``` output for NFL Teams which can be seen in the [NFLTeams.xml](resources/NFLTeams.xml) file.
 
@@ -65,8 +59,6 @@ When it comes to communicating with the Betting microservice a form from the [Be
 
 To deploy the web application that has been created so far ```Docker``` was used to create 6 images. The first 3 images were used to host Apache Tomcat instances of the 3 microservices that use a compressed version of the Project Files for each microservice called .war files. The other 3 images were used to host MySQL instances for each microservice so they would have access to their own database as specified in [Microservice Design](#microservice-design). The files that were used to create the docker images are stored in the [DockerFiles](DockerFiles) folder.
 
-</br>
-
 Due to the limitations of the ```Kubernetes``` deployment the user facing microservices FrontEnd and Betting need to be able to support HTTPS which requires them to have SSL certificates. The certificates were created and both of the images for those microservices were updated to use the certificates and an updated [server.xml](DockerFiles/server.xml) starting on line ```103``` that would use HTTPS. For more information view the [Dockerfile-frontendservice](DockerFiles/Dockerfile-frontendservice) file.
 
 ## Kubernetes
@@ -76,7 +68,5 @@ To finally deploy the web application Kubernetes was used and a [Deployment.yaml
 ## Conclusion
 
 To conclude the website was created using a microservice architecture and deployed at [espn.ninepiece2.tk/FrontEnd](https://espn.ninepiece2.tk/FrontEnd) using Kubernetes on my personal server which can be further explained [here](https://github.com/NinePiece2/TrueNASHomeServer#appsdocker-and-kubernetes). 
-
-</br>
 
 The website that was created is a prototype and other pages can be easily added now that a framework has been created for them.  Currently the Home button does not work and will error out however logging in and creating account work as well as the NFL Home and Teams pages and the Betting page after logging in. Other pages may be added at a later time. As the website is running off my personal server it is slow sometimes and does require some patients.
