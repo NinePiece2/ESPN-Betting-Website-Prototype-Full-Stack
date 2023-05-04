@@ -1,0 +1,5 @@
+Helper/Betting.class
+Business/BettingBusiness.class
+Persistence/Betting_CRUD.class
+endpoint/ApplicationConfig.class
+endpoint/BettingResource.class

@@ -1,0 +1,268 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: informationdb-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: informationdb
+spec:
+  selector:
+    app: informationdb
+  ports:
+    - port: 3306
+      targetPort: 3306
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: informationdb
+spec:
+  selector:
+    matchLabels:
+      app: informationdb
+  template:
+    metadata:
+      labels:
+        app: informationdb
+    spec:
+      containers:
+        - name: informationdb
+          image: ninepiece2/coe692_lab5:informationdb
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: storage
+              mountPath: /data/informationdb
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: informationdb-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: information
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: information
+  template:
+    metadata:
+      labels:
+        app: information
+    spec:
+      containers:
+        - name: information
+          image: ninepiece2/coe692_lab5:informationservice
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_URL
+              value: informationdb:3306
+          imagePullPolicy: Always
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: bettingdb-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bettingdb
+spec:
+  selector:
+    app: bettingdb
+  ports:
+    - port: 3306
+      targetPort: 3306
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bettingdb
+spec:
+  selector:
+    matchLabels:
+      app: bettingdb
+  template:
+    metadata:
+      labels:
+        app: bettingdb
+    spec:
+      containers:
+        - name: bettingdb
+          image: ninepiece2/coe692_lab5:bettingdb
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: storage
+              mountPath: /data/bettingdb
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: bettingdb-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: betting
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: betting
+  template:
+    metadata:
+      labels:
+        app: betting
+    spec:
+      containers:
+        - name: betting
+          image: ninepiece2/coe692_lab5:bettingservice
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_URL
+              value: bettingdb:3306
+            - name: frontendService
+              value: frontend:80
+          imagePullPolicy: Always
+---
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: accountdb-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: accountdb
+spec:
+  selector:
+    app: accountdb
+  ports:
+    - port: 3306
+      targetPort: 3306
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: accountdb
+spec:
+  selector:
+    matchLabels:
+      app: accountdb
+  template:
+    metadata:
+      labels:
+        app: accountdb
+    spec:
+      containers:
+        - name: accountdb
+          image: ninepiece2/coe692_lab5:accountdb
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: storage
+              mountPath: /data/accountdb
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: accountdb-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: ninepiece2/coe692_lab5:frontendservice
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_URL
+              value: accountdb:3306
+              
+            - name: informationService
+              value: information:80
+              
+            - name: bettingService
+              value: betting:80
+          imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: information
+spec:
+  selector:
+    app: information
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: betting
+spec:
+  selector:
+    app: betting
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+    - name: https
+      port: 443
+      targetPort: 8443
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  selector:
+    app: frontend
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+    - name: https
+      port: 443
+      targetPort: 8443
+  type: LoadBalancer

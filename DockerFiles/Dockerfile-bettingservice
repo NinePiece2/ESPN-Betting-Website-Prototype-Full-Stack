@@ -1,0 +1,10 @@
+FROM tomcat:8.5-jdk11-openjdk
+
+COPY ./Betting-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/Betting.war
+COPY ./server.xml /usr/local/tomcat/conf/server.xml
+COPY /ssl /usr/local/tomcat/conf/ssl
+
+EXPOSE 8443
+EXPOSE 8080
+
+CMD ["/usr/local/tomcat/bin/catalina.sh", "run"]
