@@ -57,19 +57,9 @@ As mentioned previously there were three microservices chosen to create the webs
 
 ^This shows the input that is used to generate the ```XML``` output for NFL Teams which can be seen below:
 
-<!-- <style>
-  pre {
-    max-height: 400px;
-    overflow-y: auto;
-  }
-</style> -->
-
-<div style="overflow: auto;">
-    <iframe src="https://raw.githubusercontent.com/NinePiece2/ESPN-Betting-Website-Prototype-Full-Stack/main/resources/NFLTeams.xml" width="100%" height="300px"></iframe>
-</div>
 
 
-<!-- ```xml
+```xml
 <teams>
     <team>
         <name>Arizona Cardinals</name>
@@ -392,7 +382,7 @@ As mentioned previously there were three microservices chosen to create the webs
         <positionInLeague>1</positionInLeague>
     </team>
 </teams>
-``` -->
+```
 
 The FrontEnd then takes this ```XML``` and converts it into an ArrayList of Team object in the [Business.java](ProjectFiles\FrontEnd\src\main\java\Business\Business.java) and [TeamsXML.java](ProjectFiles\FrontEnd\src\main\java\Helper\TeamsXML.java) which is then used by the [NFLTeams.jsp](ProjectFiles\FrontEnd\src\main\webapp\NFLTeams.jsp) to show the relevant data to the user.
 
