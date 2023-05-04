@@ -23,7 +23,7 @@ Below is a ```Use Case Diagram``` that was created for the website described abo
 
 </br>
 
-[<img src=resources/ESPN_with_Bets_Use_Case_Diagram.png height=500>](resources/ESPN_with_Bets_Use_Case_Diagram.png)
+[<img src=resources/ESPN_with_Bets_Use_Case_Diagram.jpg height=500>](resources/ESPN_with_Bets_Use_Case_Diagram.jpg)
 
 </br>
 
@@ -31,7 +31,7 @@ Below is a ```Entity Relationship Diagram``` that was created for the database n
 
 </br>
 
-[<img src=resources/ER_Diagram.png height=400>](resources/ER_Diagram.png)
+[<img src=resources/ER_Diagram.jpg height=400>](resources/ER_Diagram.jpg)
 
 ## Microservice Design
 
