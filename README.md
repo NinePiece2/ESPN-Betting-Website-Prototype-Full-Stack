@@ -65,7 +65,7 @@ As mentioned previously there were three microservices chosen to create the webs
 </style> -->
 
 <div style="overflow: auto;">
-    <iframe src="resources\NFLTeams.xml" width="100%" height="300px"></iframe>
+    <iframe src="https://raw.githubusercontent.com/NinePiece2/ESPN-Betting-Website-Prototype-Full-Stack/main/resources/NFLTeams.xml" width="100%" height="300px"></iframe>
 </div>
 
 
