@@ -61,7 +61,7 @@ To finally deploy the web application Kubernetes was used and a [Deployment.yaml
 
 ## Conclusion
 
-To conclude the website was created using a microservice architecture and deployed at [espn.ninepiece2.tk/FrontEnd](https://espn.ninepiece2.tk/FrontEnd){:target="_blank"} using Kubernetes on my personal server which can be further explained [here](https://github.com/NinePiece2/TrueNASHomeServer#appsdocker-and-kubernetes). 
+To conclude the website was created using a microservice architecture and deployed at [espn.ninepiece2.tk/FrontEnd](https://espn.ninepiece2.tk/FrontEnd) using Kubernetes on my personal server which can be further explained [here](https://github.com/NinePiece2/TrueNASHomeServer#appsdocker-and-kubernetes). 
 
 </br>
 
