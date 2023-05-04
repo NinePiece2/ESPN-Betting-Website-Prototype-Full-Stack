@@ -45,7 +45,7 @@ As mentioned previously there were three microservices chosen to create the webs
 
 ### REST API Implementation
 
-```REST API``` is used to allow the FrontEnd microservice to communicate with the information microservice and request information such as information about a league, or the teams in a league. This information is transmitted using ```XML``` and the [InformationResource.java](ProjectFiles\Information\src\main\java\endpoint\InformationResource.java) class which can be seen below:
+```REST API``` is used to allow the FrontEnd microservice to communicate with the information microservice and request information such as information about a league, or the teams in a league. This information is transmitted using ```XML``` and the [InformationResource.java](ProjectFiles/Information/src/main/java/endpoint/InformationResource.java) class which can be seen below:
 
 [<img src=resources/XML_NFL.png height=200>](resources/XML_NFL.png)
 <br/>
@@ -55,9 +55,9 @@ As mentioned previously there were three microservices chosen to create the webs
 [<img src=resources/XML_NFLTeams.png height=25>](resources/XML_NFLTeams.png)
 <br/>
 
-^This shows the input that is used to generate the ```XML``` output for NFL Teams which can be seen in the [NFLTeams.xml](resources\NFLTeams.xml) file.
+^This shows the input that is used to generate the ```XML``` output for NFL Teams which can be seen in the [NFLTeams.xml](resources/NFLTeams.xml) file.
 
-The FrontEnd then takes this ```XML``` and converts it into an ArrayList of Team object in the [Business.java](ProjectFiles\FrontEnd\src\main\java\Business\Business.java) and [TeamsXML.java](ProjectFiles\FrontEnd\src\main\java\Helper\TeamsXML.java) which is then used by the [NFLTeams.jsp](ProjectFiles\FrontEnd\src\main\webapp\NFLTeams.jsp) to show the relevant data to the user.
+The FrontEnd then takes this ```XML``` and converts it into an ArrayList of Team object in the [Business.java](ProjectFiles/FrontEnd/src/main/java/Business/Business.java) and [TeamsXML.java](ProjectFiles/FrontEnd/src/main/java/Helper/TeamsXML.java) which is then used by the [NFLTeams.jsp](ProjectFiles/FrontEnd/src/main/webapp/NFLTeams.jsp) to show the relevant data to the user.
 
 ## Docker
 
