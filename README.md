@@ -45,7 +45,352 @@ As mentioned previously there were three microservices chosen to create the webs
 
 ### REST API Implementation
 
-Later
+```REST API``` is used to allow the FrontEnd microservice to communicate with the information microservice and request information such as information about a league, or the teams in a league. This information is transmitted using ```XML``` and the [InformationResource.java](ProjectFiles\Information\src\main\java\endpoint\InformationResource.java) class which can be seen below:
+
+[<img src=resources/XML_NFL.png height=200>](resources/XML_NFL.png)
+<br/>
+
+^This shows the ```XML``` output that results from searching for information on the NFL.
+
+[<img src=resources/XML_NFLTeams.png height=25>](resources/XML_NFLTeams.png)
+<br/>
+
+^This shows the input that is used to generate the ```XML``` output for NFL Teams which can be seen below:
+
+<style>
+  pre {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+</style>
+
+
+```xml
+<teams>
+    <team>
+        <name>Arizona Cardinals</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Atlanta Falcons</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Carolina Panthers</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Chicago Bears</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Dallas Cowboys</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Detroit Lions</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Green Bay Packers</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Los Angeles Rams</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Minnesota Vikings</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>New Orleans Saints</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>New York Giants</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Philadelphia Eagles</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>San Francisco 49ers</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Seattle Seahawks</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Tampa Bay Buccaneers</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Washington Commanders</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Baltimore Ravens</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Buffalo Bills</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Cincinnati Bengals</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Cleveland Browns</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Denver Broncos</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Houston Texans</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Indianapolis Colts</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Jacksonville Jaguars</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Kansas City Chiefs</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Las Vegas Raiders</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Los Angeles Chargers</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Miami Dolphins</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>New England Patriots</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>New York Jets</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Pittsburgh Steelers</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Tennessee Titans</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Arizona Cardinals</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Atlanta Falcons</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Carolina Panthers</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Chicago Bears</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Dallas Cowboys</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Detroit Lions</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Green Bay Packers</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Los Angeles Rams</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Minnesota Vikings</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>New Orleans Saints</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>New York Giants</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Philadelphia Eagles</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>San Francisco 49ers</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Seattle Seahawks</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Tampa Bay Buccaneers</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Washington Commanders</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Baltimore Ravens</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Buffalo Bills</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Cincinnati Bengals</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Cleveland Browns</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Denver Broncos</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Houston Texans</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Indianapolis Colts</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Jacksonville Jaguars</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Kansas City Chiefs</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Las Vegas Raiders</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Los Angeles Chargers</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Miami Dolphins</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>New England Patriots</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>New York Jets</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Pittsburgh Steelers</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+    <team>
+        <name>Tennessee Titans</name>
+        <trophiesWon>N/A</trophiesWon>
+        <positionInLeague>1</positionInLeague>
+    </team>
+</teams>
+```
+
+The FrontEnd then takes this ```XML``` and converts it into an ArrayList of Team object in the [Business.java](ProjectFiles\FrontEnd\src\main\java\Business\Business.java) and [TeamsXML.java](ProjectFiles\FrontEnd\src\main\java\Helper\TeamsXML.java) which is then used by the [NFLTeams.jsp](ProjectFiles\FrontEnd\src\main\webapp\NFLTeams.jsp) to show the relevant data to the user.
 
 ## Docker
 
