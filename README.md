@@ -59,7 +59,7 @@ When it comes to communicating with the Betting microservice a form from the [Be
 
 To deploy the web application that has been created so far ```Docker``` was used to create 6 images. The first 3 images were used to host Apache Tomcat instances of the 3 microservices that use a compressed version of the Project Files for each microservice called .war files. The other 3 images were used to host MySQL instances for each microservice so they would have access to their own database as specified in [Microservice Design](#microservice-design). The files that were used to create the docker images are stored in the [DockerFiles](DockerFiles) folder.
 
-Due to the limitations of the ```Kubernetes``` deployment the user facing microservices FrontEnd and Betting need to be able to support HTTPS which requires them to have SSL certificates. The certificates were created and both of the images for those microservices were updated to use the certificates and an updated [server.xml](DockerFiles/server.xml) starting on line ```103``` that would use HTTPS. For more information view the [Dockerfile-frontendservice](DockerFiles/Dockerfile-frontendservice) file.
+Due to the limitations of ```Cloudflare``` the user facing microservices FrontEnd and Betting need to be able to support HTTPS which requires them to have SSL certificates. The certificates were created and both of the images for those microservices were updated to use the certificates and an updated [server.xml](DockerFiles/server.xml) starting on line ```103``` that would use HTTPS. For more information view the [Dockerfile-frontendservice](DockerFiles/Dockerfile-frontendservice) file.
 
 ## Kubernetes
 
