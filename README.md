@@ -1,5 +1,9 @@
 # ESPN Betting Website Prototype (Full Stack)
 
+## NOTE
+
+This project has been archived and all deployments have been termianted.
+
 ## Table of Contents
 - [ESPN Betting Website Prototype (Full Stack)](#espn-betting-website-prototype-full-stack)
   - [Table of Contents](#table-of-contents)
